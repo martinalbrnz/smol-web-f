@@ -1,14 +1,16 @@
 :root {
   --primary: #5c9ead;
-  --primary-text: #ffffff;
+  --primary-text: #fdffff;
 
   --secondary: #326273;
-  --secondary-text: #eeeeee;
+  --secondary-text: #e0eeee;
 
   --accent: #e39774;
 
-  --action: #22aa22;
+  --action: #0e8b0e;
+  --action-text: #fdffff;
   --error: #aa2222;
+  --error-text: #fdffff;
 
   --shadow-color: #0002;
   --shadow: 0px 0px 12px 4px var(--shadow-color);
