@@ -8,6 +8,9 @@ const Header = () => {
       <A href="/presupuestos" activeClass={styles.activeLink}>
         Presupuestos
       </A>
+      <A href="/contabilidad" activeClass={styles.activeLink}>
+        Contabilidad
+      </A>
     </div>
   );
 };
