@@ -15,7 +15,7 @@ const Presupuestos = () => {
       </div>
       <div>
         <A href="operativos">
-          <h2>Operativo</h2>
+          <h2>Operativos</h2>
         </A>
       </div>
     </div>
