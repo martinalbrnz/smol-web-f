@@ -1,0 +1,64 @@
+@mixin form {
+  box-shadow: var(--shadow);
+  margin: 12px;
+  width: 360px;
+  border-radius: 2px;
+
+  .formHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    color: var(--primary-text);
+    background-color: var(--primary);
+    font-weight: 600;
+    border-radius: 2px 2px 0 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      min-height: 62px;
+
+      input,
+      select {
+        padding: 4px 8px;
+        font-family: inherit;
+      }
+
+      .error {
+        margin-left: 12px;
+        font-size: smaller;
+        color: var(--error);
+      }
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 4px;
+      background-color: var(--action);
+      color: var(--action-text);
+      font-weight: 600;
+      border: none;
+      border-radius: 2px;
+      box-shadow: var(--shadow);
+      font-family: inherit;
+      transition: 0.2s;
+
+      &:hover {
+        filter: brightness(1.03);
+        transform: scale(1.005);
+      }
+
+      &:active {
+        filter: brightness(0.98);
+        transform: scale(0.995);
+      }
+    }
+  }
+}
