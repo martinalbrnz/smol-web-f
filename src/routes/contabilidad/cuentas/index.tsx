@@ -1,5 +1,11 @@
+import CuentasForm from "~/components/cuentas-form";
+
 const Cuentas = () => {
-  return <div>cuentas</div>;
+  return (
+    <div>
+      <CuentasForm />
+    </div>
+  );
 };
 
 export default Cuentas;
