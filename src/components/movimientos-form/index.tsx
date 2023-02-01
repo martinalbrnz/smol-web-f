@@ -73,7 +73,7 @@ const MovimientosForm = () => {
         </div>
         <div>
           <label>Tipo</label>
-          <select name="type">
+          <select name="movementType">
             <option value="input" selected>
               Ingreso
             </option>

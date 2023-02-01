@@ -12,7 +12,7 @@ import {
   Scripts,
   Title,
 } from "solid-start";
-import Header from "./components/header";
+import LeftSidebar from "./components/left-sidebar";
 import "./root.css";
 import "./styles/colors.scss";
 
@@ -31,7 +31,8 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <Header />
+            {/* <Header /> */}
+            <LeftSidebar />
             <Routes>
               <FileRoutes />
             </Routes>

@@ -13,7 +13,8 @@
     "paths": {
       "~/*": ["./src/*"],
       "@models/*": ["./src/models/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   }
 }

@@ -6,10 +6,10 @@
 
 body {
   font-family: 'Poppins', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
 }
 
 a {
-  margin-right: 1rem;
   text-decoration: none;
 }
 

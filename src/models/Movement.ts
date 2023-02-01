@@ -7,5 +7,5 @@ export default interface Movement {
 	amount: number
 	description: string
 	currency: Currency
-	type: 'input' | 'output'
+	movementType: 'input' | 'output'
 }
