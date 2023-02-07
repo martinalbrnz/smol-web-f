@@ -1,0 +1,31 @@
+.tile {
+  font-size: medium;
+  display: flex;
+  box-shadow: var(--shadow);
+
+  .dateSection {
+    max-width: calc(100% - 120px);
+    padding: 4px 0px 8px 4px;
+    flex-grow: 1;
+
+    .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .balanceSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+    min-width: 120px;
+    padding: 4px;
+  }
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}

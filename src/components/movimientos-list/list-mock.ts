@@ -9,7 +9,7 @@ export const movementList: Movement[] = [
 		currency: Currency.ARS,
 		date: new Date(2023, 0, 9, 14, 10),
 		description: 'Venta de cantos por metro',
-		type: 'input'
+		movementType: 'input'
 	},
 	{
 		id: 2,
@@ -18,7 +18,7 @@ export const movementList: Movement[] = [
 		currency: Currency.ARS,
 		date: new Date(2023, 0, 9, 14, 45),
 		description: 'Compra de insumos para lámparas',
-		type: 'output'
+		movementType: 'output'
 	},
 	{
 		id: 3,
@@ -27,6 +27,6 @@ export const movementList: Movement[] = [
 		currency: Currency.ARS,
 		date: new Date(2023, 0, 9, 15, 42),
 		description: 'Venta de mesa de luz desmontable',
-		type: 'input'
+		movementType: 'input'
 	},
 ]
