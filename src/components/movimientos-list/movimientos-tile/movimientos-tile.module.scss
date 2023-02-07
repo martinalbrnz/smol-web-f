@@ -6,6 +6,7 @@
   .dateSection {
     max-width: calc(100% - 120px);
     padding: 4px 0px 8px 4px;
+    flex-grow: 1;
 
     .date {
       opacity: 66%;

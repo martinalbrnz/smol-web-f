@@ -2,4 +2,5 @@
 
 .formContainer {
   @include c.form;
+  flex-grow: 1;
 }

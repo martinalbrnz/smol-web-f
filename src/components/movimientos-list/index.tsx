@@ -9,7 +9,7 @@ const MovimientosList = () => {
   return (
     <div class={styles.listContainer}>
       <div class={styles.header}>
-        <h2>Movimientos</h2>
+        <span>Movimientos</span>
       </div>
       <div class={styles.tileContainer}>
         <For each={movements()} fallback={<p>Cargando...</p>}>

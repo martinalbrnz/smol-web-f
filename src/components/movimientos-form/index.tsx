@@ -10,7 +10,7 @@ interface MovimientosErrors {
 
 const MovimientosForm = () => {
   const { form, errors, reset } = createForm({
-    onSubmit: (values, context) => {
+    onSubmit: (values, _) => {
       console.log(values);
     },
     onError: (errors) => errors,
@@ -38,7 +38,9 @@ const MovimientosForm = () => {
 
   return (
     <div class={styles.formContainer}>
-      <div class={styles.formHeader}>Crear nuevo movimiento</div>
+      <div class={styles.formHeader}>
+        <span>Crear nuevo movimiento</span>
+      </div>
       <form ref={form}>
         <div>
           <label>

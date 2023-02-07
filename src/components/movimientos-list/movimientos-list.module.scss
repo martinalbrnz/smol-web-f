@@ -2,6 +2,7 @@
   width: 320px;
   box-shadow: var(--shadow);
   margin: 12px;
+  flex-grow: 10;
 
   .header {
     display: flex;
@@ -9,6 +10,7 @@
     align-items: center;
     padding-left: 12px;
     background-color: var(--primary);
+    font-weight: 600;
     color: var(--primary-text);
     box-shadow: var(--shadow);
   }
