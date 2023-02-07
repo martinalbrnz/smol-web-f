@@ -9,7 +9,6 @@ body {
   display: flex;
   max-height: 100vh;
   overflow-y: scroll;
-
 }
 
 body::-webkit-scrollbar {
