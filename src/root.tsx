@@ -13,7 +13,7 @@ import {
   Title,
 } from "solid-start";
 import LeftSidebar from "./components/left-sidebar";
-import "./root.css";
+import "./index.css";
 import "./styles/colors.scss";
 
 export default function Root() {
