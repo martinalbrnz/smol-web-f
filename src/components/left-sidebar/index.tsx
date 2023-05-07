@@ -7,22 +7,25 @@ import {
   TbMenu2,
   TbMessages,
 } from "solid-icons/tb";
-import { createSignal, Show } from "solid-js";
-import styles from "./left-sidebar.module.scss";
+import { Show, createSignal } from "solid-js";
 
 const LeftSidebar = () => {
   const [isOpen, setIsOpen] = createSignal(false);
   const size = 32;
 
+  const sidebarItemClass =
+    "flex items-center justify-start gap-2 w-full h-10 cursor-pointer py-0 px-1 text-gray-50 rounded-sm active:bg-teal-600 transition-all select-none";
+  const activeClass = "bg-teal-700 shadow";
+
   return (
-    <nav class={styles.sidebarContainer}>
-      <div class={styles.topSection}>
-        <div class={styles.sidebarItem} onclick={() => setIsOpen(!isOpen())}>
+    <nav class="flex sm:flex-col items-start justify-between px-2 py-3 h-16 sm:h-screen bg-teal-400 shadow">
+      <div>
+        <div class={sidebarItemClass} onclick={() => setIsOpen(!isOpen())}>
           <TbMenu2 size={size} />
         </div>
       </div>
-      <div class={styles.midSection}>
-        <A href="/" class={styles.sidebarItem}>
+      <div class="flex gap-2 sm:flex-col">
+        <A href="/" class={sidebarItemClass}>
           <TbHome size={size} />
           <Show when={isOpen()}>
             <span>Inicio</span>
@@ -30,8 +33,8 @@ const LeftSidebar = () => {
         </A>
         <A
           href="/presupuestos"
-          class={styles.sidebarItem}
-          activeClass={styles.activeLink}
+          class={sidebarItemClass}
+          activeClass={activeClass}
         >
           <TbCurrencyDollar size={size} />
           <Show when={isOpen()}>
@@ -40,8 +43,8 @@ const LeftSidebar = () => {
         </A>
         <A
           href="/contabilidad"
-          class={styles.sidebarItem}
-          activeClass={styles.activeLink}
+          class={sidebarItemClass}
+          activeClass={activeClass}
         >
           <TbAbacus size={size} />
           <Show when={isOpen()}>
@@ -49,14 +52,14 @@ const LeftSidebar = () => {
           </Show>
         </A>
       </div>
-      <div class={styles.bottomSection}>
-        <div class={styles.sidebarItem}>
+      <div class="flex gap-2 sm:flex-col">
+        <div class={sidebarItemClass}>
           <TbBell size={size} />
           <Show when={isOpen()}>
             <span>Notificaciones</span>
           </Show>
         </div>
-        <div class={styles.sidebarItem}>
+        <div class={sidebarItemClass}>
           <TbMessages size={size} />
           <Show when={isOpen()}>
             <span>Mensajes</span>

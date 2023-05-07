@@ -28,7 +28,7 @@ export default function Root() {
           rel="stylesheet"
         ></Link>
       </Head>
-      <Body>
+      <Body class="flex flex-col sm:flex-row flex-1 p-0 m-0 bg-gray-50 h-screen">
         <Suspense>
           <ErrorBoundary>
             {/* <Header /> */}
