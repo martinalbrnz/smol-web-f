@@ -1,10 +1,13 @@
-import { Index, JSX } from "solid-js";
+import { For, Index, JSX, Show } from "solid-js";
 
-export interface InputProps {
-  label?: string;
-  placeholder?: string;
-  type: string;
+export interface SelectProps {
   name: string;
+  label?: string;
+  defaultValue?: string;
+  placeholder?: string;
+  options: SelectOptions[];
+  required?: boolean;
+  multiple?: boolean;
   leading?: JSX.Element;
   leadingCallback?: () => unknown;
   trailing?: JSX.Element;
@@ -12,17 +15,20 @@ export interface InputProps {
   errors?: string[];
 }
 
-const Input = (props: InputProps) => {
+export interface SelectOptions {
+  id: number;
+  label: string;
+  [key: string]: any;
+}
+
+const Select = (props: SelectProps) => {
   return (
     <>
       <span class="text-gray-800 dark:text-white font-medium">
         {props.label}
       </span>
       <div class="relative transition-all duration-100">
-        <input
-          type={props.type}
-          name={props.name}
-          placeholder={props.placeholder}
+        <select
           class={`
 					w-full py-1 px-2 rounded outline-none ring-1 transition-all
 					focus:ring-2 focus:ring-blue-200 focus:shadow
@@ -34,7 +40,17 @@ const Input = (props: InputProps) => {
               : "ring-blue-100 dark:ring-blue-700 text-black"
           }
 					`}
-        />
+          name={props.name}
+        >
+          <Show when={props.defaultValue}>
+            <option value="null" disabled selected>
+              {props.defaultValue}
+            </option>
+          </Show>
+          <For each={props.options}>
+            {(option) => <option value={option.id}>{option.label}</option>}
+          </For>
+        </select>
         <div
           onclick={props.leadingCallback}
           class={`absolute left-2 top-2 text-gray-900`}
@@ -48,11 +64,11 @@ const Input = (props: InputProps) => {
           {props.trailing}
         </div>
         <Index each={props.errors}>
-          {(error, i) => <span class="text-sm text-red-600">{error}</span>}
+          {(error) => <span class="text-sm text-red-600">{error}</span>}
         </Index>
       </div>
     </>
   );
 };
 
-export default Input;
+export default Select;
