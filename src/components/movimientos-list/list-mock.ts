@@ -17,7 +17,7 @@ export const movementList: Movement[] = [
 		amount: 786.66,
 		currency: Currency.ARS,
 		date: new Date(2023, 0, 9, 14, 45),
-		description: 'Compra de insumos para lámparas',
+		description: 'Compra de insumos para lámparas de madera estilo nórdico premium',
 		movementType: 'output'
 	},
 	{

@@ -1,6 +1,0 @@
-@use "../../styles/form.scss" as c;
-
-.formContainer {
-  @include c.form;
-  flex-grow: 1;
-}

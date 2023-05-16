@@ -1,113 +1,81 @@
 import { createForm } from "@felte/solid";
-import { Show } from "solid-js";
-import styles from "./movimientos-form.module.scss";
-
-interface MovimientosErrors {
-  date?: string;
-  amount?: string;
-  description?: string;
-}
+import { validator } from "@felte/validator-zod";
+import { z } from "zod";
+import Input from "../shared/Input";
+import Select, { SelectOptions } from "../shared/Select";
 
 const MovimientosForm = () => {
-  const { form, errors, reset } = createForm({
-    onSubmit: (values, _) => {
-      console.log(values);
-    },
-    onError: (errors) => errors,
-    validate: (values) => {
-      const errors: MovimientosErrors = {};
-      if (!values.date) {
-        errors.date = "La fecha es requerida!";
-      }
-      if (!values.amount) {
-        errors.amount = "Debe tener un monto!";
-      }
-      if (values.amount < 0) {
-        errors.amount = "El monto debe ser mayor o igual a 0!";
-      }
-      if (!values.description) {
-        errors.description = "Debe tener una descripción!";
-      }
-      if (values.description && values.description.length < 10) {
-        errors.description =
-          "La descripción debe tener al menos 10 caracteres!";
-      }
-      return errors;
-    },
+  const schema = z.object({
+    date: z
+      .string()
+      .nonempty({ message: "Debe ingresar una fecha" })
+      .transform((str) => new Date(str)),
+    amount: z
+      .number({ required_error: "Debe ingresar un monto!" })
+      .min(0, { message: "El valor debe ser igual o mayor a 0!" }),
   });
 
+  const { form, errors } = createForm({
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    extend: [validator({ schema })],
+  });
+
+  const cuentaOptions: SelectOptions[] = [
+    { id: 1, label: "Caja local Mendoza" },
+    { id: 2, label: "Caja local San Lorenzo" },
+    { id: 2, label: "C/A ICBC" },
+    { id: 2, label: "C/C ICBC" },
+  ];
+
+  const movimientoOptions: SelectOptions[] = [
+    { id: 1, label: "Ingreso" },
+    { id: 2, label: "Egreso" },
+  ];
+
+  const currencyOptions: SelectOptions[] = [
+    { id: 1, label: "ARS - Pesos argentinos" },
+    { id: 2, label: "USD - Dólares estadounidenses" },
+    { id: 3, label: "EUR - Euros" },
+  ];
+
   return (
-    <div class={styles.formContainer}>
-      <div class={styles.formHeader}>
+    <div class="flex flex-1 flex-col rounded shadow bg-gray-100 h-fit min-w-[320px]">
+      <div class="flex items-center justify-center rounded-t text-white bg-teal-500 h-11">
         <span>Crear nuevo movimiento</span>
       </div>
-      <form ref={form}>
-        <div>
-          <label>
-            Fecha
-            <Show when={errors().date}>
-              <span class={styles.error}>({errors().date})</span>
-            </Show>
-          </label>
-          <input type="date" name="date" />
-        </div>
-        <div>
-          <label>Cuenta</label>
-          <select name="account">
-            <option value="caja" selected>
-              Caja
-            </option>
-            <option value="banco">Banco</option>
-          </select>
-        </div>
-        <div>
-          <label>
-            Monto
-            <Show when={errors().amount}>
-              <span class={styles.error}>({errors().amount})</span>
-            </Show>
-          </label>
-          <input
-            type="number"
-            name="amount"
-            placeholder="Ingrese el monto del movimiento"
-          />
-        </div>
-        <div>
-          <label>Tipo</label>
-          <select name="movementType">
-            <option value="input" selected>
-              Ingreso
-            </option>
-            <option value="output">Egreso</option>
-          </select>
-        </div>
-        <div>
-          <label>
-            Descripción
-            <Show when={errors().description}>
-              <span class={styles.error}>({errors().description})</span>
-            </Show>
-          </label>
-          <input
-            type="text"
-            name="description"
-            placeholder="Ingrese una descripción del movimiento"
-          />
-        </div>
-        <div>
-          <label>Moneda</label>
-          <select name="currency">
-            <option value="ars" selected>
-              ARS
-            </option>
-            <option value="usd">USD</option>
-          </select>
-        </div>
-        <button type="submit">Guardar</button>
+      <form ref={form} class="flex flex-col gap-1 p-2">
+        <Input name="date" type="date" label="Fecha" errors={errors().date} />
+        <Select name="account" label="Cuenta" options={cuentaOptions} />
+        <Input
+          name="amount"
+          type="number"
+          label="Monto"
+          placeholder="Ingrese el monto"
+          errors={errors().amount}
+        />
+        <Select
+          name="movementType"
+          label="Tipo de movimiento"
+          options={movimientoOptions}
+        />
+        <Select name="currency" label="Moneda" options={currencyOptions} />
+        <Input
+          name="description"
+          placeholder="Ingrese una descripción"
+          type="text"
+          label="Descripción"
+        />
+        <button
+          type="submit"
+          class="text-white bg-blue-400 dark:bg-blue-700
+							outline-none p-1 mt-2 rounded font-semibold select-none shadow transition-all
+							active:scale-[.99] active:bg-blue-500 dark:active:bg-blue-800"
+        >
+          Guardar
+        </button>
       </form>
-      {/* <pre>{JSON.stringify(errors(), null, 2)}</pre> */}
-      {/* <pre>{JSON.stringify(touched(), null, 2)}</pre> */}
     </div>
   );
 };

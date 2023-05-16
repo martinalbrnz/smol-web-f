@@ -1,5 +1,4 @@
 import Movement from "~/models/Movement";
-import styles from "./movimientos-tile.module.scss";
 
 interface MovementProps {
   movement: Movement;
@@ -7,14 +6,14 @@ interface MovementProps {
 
 const MovimientosTile = (props: MovementProps) => {
   return (
-    <div class={styles.tile}>
-      <div class={styles.dateSection}>
-        <p class={styles.date}>{props.movement.date.toLocaleDateString()}</p>
-        <p class={styles.description}>{props.movement.description}</p>
+    <div class="grid grid-cols-5 rounded p-1 bg-white shadow ">
+      <div class="col-span-4">
+        <p class="text-sm">{props.movement.date.toLocaleDateString()}</p>
+        <p class="text-md truncate max-w-max">{props.movement.description}</p>
       </div>
-      <div class={styles.amountSection}>
-        <p>{props.movement.account}</p>
-        <div>
+      <div class="flex flex-col justify-between p-1">
+        <p class="text-center">{props.movement.account}</p>
+        <div class="flex justify-between">
           <p>$</p>
           <p>{props.movement.amount.toFixed(2)}</p>
           <p>{props.movement.currency}</p>
