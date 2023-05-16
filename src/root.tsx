@@ -31,7 +31,6 @@ export default function Root() {
       <Body class="flex flex-col sm:flex-row flex-1 p-0 m-0 bg-gray-50 h-screen">
         <Suspense>
           <ErrorBoundary>
-            {/* <Header /> */}
             <LeftSidebar />
             <Routes>
               <FileRoutes />
