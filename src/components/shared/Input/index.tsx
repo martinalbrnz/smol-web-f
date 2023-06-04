@@ -10,11 +10,12 @@ export interface InputProps {
   trailing?: JSX.Element;
   trailingCallback?: () => unknown;
   errors?: string[];
+  class?: string;
 }
 
 const Input = (props: InputProps) => {
   return (
-    <>
+    <div class={`flex flex-col gap-0.5 ${props.class}`}>
       <span class="text-gray-800 dark:text-white font-medium">
         {props.label}
       </span>
@@ -51,7 +52,7 @@ const Input = (props: InputProps) => {
           {(error, i) => <span class="text-sm text-red-600">{error}</span>}
         </Index>
       </div>
-    </>
+    </div>
   );
 };
 

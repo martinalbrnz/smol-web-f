@@ -13,6 +13,7 @@ export interface SelectProps {
   trailing?: JSX.Element;
   trailingCallback?: () => unknown;
   errors?: string[];
+  class?: string;
 }
 
 export interface SelectOptions {
@@ -23,7 +24,7 @@ export interface SelectOptions {
 
 const Select = (props: SelectProps) => {
   return (
-    <>
+    <div class={`flex flex-col gap-0.5 ${props.class}`}>
       <span class="text-gray-800 dark:text-white font-medium">
         {props.label}
       </span>
@@ -67,7 +68,7 @@ const Select = (props: SelectProps) => {
           {(error) => <span class="text-sm text-red-600">{error}</span>}
         </Index>
       </div>
-    </>
+    </div>
   );
 };
 
