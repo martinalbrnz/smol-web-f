@@ -11,7 +11,7 @@
 body {
 	font-family: 'Poppins', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	display: flex;
-	max-height: 100vh;
+	max-height: calc(100vh - 36px);
 }
 
 main {

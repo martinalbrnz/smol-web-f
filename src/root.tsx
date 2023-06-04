@@ -12,6 +12,7 @@ import {
   Scripts,
   Title,
 } from "solid-start";
+import Header from "./components/header";
 import LeftSidebar from "./components/left-sidebar";
 import "./index.css";
 import "./styles/colors.scss";
@@ -32,9 +33,12 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <LeftSidebar />
-            <Routes>
-              <FileRoutes />
-            </Routes>
+            <div class="flex flex-col w-full">
+              <Header />
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </div>
           </ErrorBoundary>
         </Suspense>
         <Scripts />
