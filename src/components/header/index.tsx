@@ -1,5 +1,5 @@
-import { For, createEffect } from "solid-js";
-import { A, Route, Routes, useLocation } from "solid-start";
+import { For } from "solid-js";
+import { A, Route, Routes } from "solid-start";
 
 export interface Subroute {
   href: string;
@@ -7,12 +7,6 @@ export interface Subroute {
 }
 
 const Header = () => {
-  const location = useLocation();
-
-  createEffect(() => {
-    console.log(location.pathname);
-  });
-
   return (
     <Routes>
       <Route
